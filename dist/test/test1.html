@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../snap.svg-min.js"></script>
+    <style>
+        #svg{
+            border: 1px solid #000;
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div id="svg"></div>
+</body>
+<script>
+    var svg = Snap(300, 300);
+    // Lets create big circle in the middle:
+    console.log(svg)
+    var bigCircle = svg.circle(150, 150, 100);
+    // By default its black, lets change its attributes
+    bigCircle.attr({
+        fill: "red",
+        stroke: "#000"
+    });
+    bigCircle.mouseout(function() {
+        this.animate({
+            fill: "#00f" ,
+        }, 1000);	
+    }).mouseover(function() {
+        this.animate({
+            fill: "#f00",
+        }, 1000);	
+    });
+    var c = svg.paper.circle(50, 50, 40).attr({
+        fill: "#f00"        // 红色
+    }).mouseout(function() {
+        this.animate({
+            fill: "#00f",
+        }, 1000);	
+    }).mouseover(function() {
+        this.animate({
+            fill: "#f00",
+        }, 1000);	
+    });
+    document.getElementById("svg").appendChild(svg.node);
+    // Now we can play with it:
+</script>
+
+</html>
